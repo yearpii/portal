@@ -37,7 +37,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
-          path: '.'
-      - name: ./portalukm-main/public
+          path: ./portalukm-main/public
+      - name: Deploy to Github Pages
         id: deployment
         uses: actions/deploy-pages@v4
