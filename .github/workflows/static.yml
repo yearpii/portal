@@ -38,6 +38,6 @@ jobs:
         with:
           # Upload entire repository
           path: '.'
-      - name: portalukm-main
+      - name: ./portalukm-main/public
         id: deployment
         uses: actions/deploy-pages@v4
