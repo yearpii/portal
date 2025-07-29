@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info UKM - Universitas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4741A6;
+            --secondary: #F9CE69;
+            --accent: #9BBBFC;
+            --background: #D9EFF7;
+            --white: #FFFFFF;
+            --black: #333333;
+            --text: #2D3748;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Open Sans', 'Segoe UI', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo-icon {
+            color: var(--secondary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .btn-nav {
+            padding: 0.6rem 1.2rem;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-nav:hover {
+            background-color: var(--secondary);
+            color: var(--black);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 500px;
+            background: linear-gradient(135deg, rgba(71, 65, 166, 0.8) 0%, rgba(155, 187, 252, 0.6) 100%), 
+                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            text-align: left;
+            color: var(--white);
+            padding: 0 5rem;
+        }
+        
+        .hero-content {
+            max-width: 600px;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        /* Events Section */
+        .events {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        .events-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        
+        .event-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--accent);
+        }
+        
+        .event-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .event-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .event-content {
+            padding: 1.5rem;
+        }
+        
+        .event-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .event-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1.2rem;
+            font-size: 0.9rem;
+        }
+        
+        .event-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #4A5568;
+        }
+        
+        .event-org {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            color: var(--primary);
+        }
+        
+        .org-logo {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .btn-detail {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.6rem 1.2rem;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .btn-detail:hover {
+            background-color: #3a3485;
+        }
+        
+        .btn-detail i {
+            margin-left: 0.5rem;
+            transition: transform 0.3s;
+        }
+        
+        .btn-detail:hover i {
+            transform: translateX(3px);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section {
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 50%;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+        
+        .footer-section p, .footer-section a {
+            margin-bottom: 0.8rem;
+            display: block;
+            color: #E2E8F0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: var(--secondary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary);
+            color: var(--black);
+        }
+        
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: #A0AEC0;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+            
+            .hero {
+                height: 400px;
+                padding: 0 2rem;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .events {
+                padding: 3rem 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero {
+                height: 350px;
+                padding: 0 1.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span class="logo-icon">✦</span>
+            <span>InfoUKM</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#tentang">Tentang</a></li>
+                <li><a href="login.html" class="btn-nav">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Temukan Kegiatan Mahasiswa yang Menginspirasi</h1>
+            <p>Jelajahi berbagai event dan kegiatan dari Unit Kegiatan Mahasiswa di kampus kami. Tingkatkan skill dan perluas jaringan pertemanan Anda.</p>
+        </div>
+    </section>
+    
+    <section class="events">
+        <h2 class="section-title">Ongoing Event</h2>
+        <div class="events-container">
+            <!-- Event Card 1 -->
+            <div class="event-card">
+                <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1112&q=80" alt="Workshop Fotografi" class="event-img">
+                <div class="event-content">
+                    <h3 class="event-title">Workshop Fotografi Dasar</h3>
+                    <div class="event-meta">
+                        <span>🗓️ 15 Oktober 2025</span>
+                        <span>📍 Gedung Serba Guna Kampus</span>
+                        <span>⏰ 09.00 - 15.00 WIB</span>
+                    </div>
+                    <div class="event-org">
+                        <img src="https://via.placeholder.com/24" alt="UKM Fotografi" class="org-logo">
+                        <span>UKM Fotografi</span>
+                    </div>
+                    <a href="event_detail.html" class="btn-detail">
+                        Lihat Detail
+                        <i>→</i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Event Card 2 -->
+            <div class="event-card">
+                <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1605&q=80" alt="Turnamen Futsal" class="event-img">
+                <div class="event-content">
+                    <h3 class="event-title">Turnamen Futsal Antar Fakultas</h3>
+                    <div class="event-meta">
+                        <span>🗓️ 20-25 Oktober 2025</span>
+                        <span>📍 Lapangan Futsal Kampus</span>
+                        <span>⏰ 08.00 - 18.00 WIB</span>
+                    </div>
+                    <div class="event-org">
+                        <img src="https://via.placeholder.com/24" alt="UKM Olahraga" class="org-logo">
+                        <span>UKM Olahraga</span>
+                    </div>
+                    <a href="#" class="btn-detail">
+                        Lihat Detail
+                        <i>→</i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Event Card 3 -->
+            <div class="event-card">
+                <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Pentas Seni" class="event-img">
+                <div class="event-content">
+                    <h3 class="event-title">Pentas Seni Budaya Nusantara</h3>
+                    <div class="event-meta">
+                        <span>🗓️ 5 November 2025</span>
+                        <span>📍 Auditorium Utama</span>
+                        <span>⏰ 19.00 - 22.00 WIB</span>
+                    </div>
+                    <div class="event-org">
+                        <img src="https://via.placeholder.com/24" alt="UKM Seni Budaya" class="org-logo">
+                        <span>UKM Seni Budaya</span>
+                    </div>
+                    <a href="#" class="btn-detail">
+                        Lihat Detail
+                        <i>→</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-content" id="tentang">
+            <div class="footer-section">
+                <h3>Tentang InfoUKM</h3>
+                <p>Portal resmi informasi kegiatan Unit Kegiatan Mahasiswa di lingkungan Universitas.</p>
+                <p>Menghubungkan mahasiswa dengan berbagai kegiatan pengembangan diri.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Kontak</h3>
+                <a href="mailto:info@infoukm.ac.id">info@infoukm.ac.id</a>
+                <a href="tel:+622112345678">(021) 1234 5678</a>
+                <p>Gedung R. Said Soekanto Lt. 4</p>
+            </div>
+    
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 InfoUKM. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

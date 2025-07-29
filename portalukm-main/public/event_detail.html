@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Event - Info UKM</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4741A6;
+            --secondary: #F9CE69;
+            --accent: #9BBBFC;
+            --background: #EFF8FF;
+            --white: #FFFFFF;
+            --black: #333333;
+            --text: #2D3748;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Open Sans', 'Segoe UI', sans-serif;
+        }
+        
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--white);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo-icon {
+            color: var(--secondary);
+        }
+        
+        .btn-back {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            background-color: var(--white);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .btn-back:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        /* Event Detail */
+        .event-detail {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+        
+        .detail-header {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 3rem;
+            background-color: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        
+        .detail-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        
+        .detail-content {
+            padding: 2rem;
+        }
+        
+        .detail-title {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .detail-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #EDF2F7;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #4A5568;
+        }
+        
+        .detail-org {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .org-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--secondary);
+        }
+        
+        .org-info h4 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+        }
+        
+        .org-info p {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+        
+        .detail-body {
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        
+        .detail-body h3 {
+            color: var(--primary);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.4rem;
+        }
+        
+        .detail-body ul, .detail-body ol {
+            margin: 1rem 0 1rem 2rem;
+        }
+        
+        .detail-body li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .btn-primary {
+            padding: 0.9rem 1.8rem;
+            background-color: var(--secondary);
+            color: var(--black);
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary:hover {
+            background-color: #f8c34d;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .btn-secondary {
+            padding: 0.9rem 1.8rem;
+            background-color: var(--white);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        /* UKM Section */
+        .ukm-section {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-top: 4px solid var(--accent);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        
+        .ukm-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .ukm-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--secondary);
+        }
+        
+        .ukm-info h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .ukm-meta {
+            display: flex;
+            gap: 1rem;
+            color: #718096;
+            font-size: 0.9rem;
+        }
+        
+        .ukm-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .ukm-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: #EDF2F7;
+            border-radius: 50%;
+            color: var(--primary);
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .ukm-social a:hover {
+            background-color: var(--secondary);
+            color: var(--black);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 3rem 2rem 2rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 50%;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+        
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: #A0AEC0;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .detail-img {
+                height: 300px;
+            }
+            
+            .detail-title {
+                font-size: 1.8rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .btn-primary, .btn-secondary {
+                text-align: center;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            header {
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .event-detail {
+                padding: 0 1rem;
+            }
+            
+            .detail-img {
+                height: 200px;
+            }
+            
+            .detail-title {
+                font-size: 1.5rem;
+            }
+            
+            .detail-meta {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            
+            .ukm-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .ukm-social {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span class="logo-icon">✦</span>
+            <span>InfoUKM</span>
+        </div>
+        <a href="index.html" class="btn-back">
+            ← Kembali ke Beranda
+        </a>
+    </header>
+    
+    <main class="event-detail">
+        <article class="detail-header">
+            <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1112&q=80" alt="Workshop Fotografi" class="detail-img">
+            <div class="detail-content">
+                <h1 class="detail-title">Workshop Fotografi Dasar</h1>
+                <div class="detail-meta">
+                    <div class="meta-item">
+                        🗓️ 15 Oktober 2025
+                    </div>
+                    <div class="meta-item">
+                        📍 Gedung Serba Guna Kampus
+                    </div>
+                    <div class="meta-item">
+                        ⏰ 09.00 - 15.00 WIB
+                    </div>
+                    <div class="meta-item">
+                        💰 Rp 50.000
+                    </div>
+                </div>
+                
+                <div class="detail-org">
+                    <img src="https://via.placeholder.com/60" alt="UKM Fotografi" class="org-logo">
+                    <div class="org-info">
+                        <h4>UKM Fotografi</h4>
+                        <p>Unit Kegiatan Mahasiswa Fotografi Universitas</p>
+                    </div>
+                </div>
+                
+                <div class="detail-body">
+                    <p>Workshop fotografi dasar ini ditujukan untuk mahasiswa yang ingin mempelajari dasar-dasar fotografi menggunakan kamera DSLR/mirrorless. Acara ini cocok untuk pemula yang baru memulai hobi fotografi maupun yang ingin memperdalam teknik dasar fotografi.</p>
+                    
+                    <h3>Materi yang akan dipelajari:</h3>
+                    <ul>
+                        <li>Pengenalan bagian-bagian kamera dan fungsinya</li>
+                        <li>Memahami segitiga eksposur (ISO, Aperture, Shutter Speed)</li>
+                        <li>Komposisi dasar fotografi (rule of thirds, leading lines, dll)</li>
+                        <li>Teknik pencahayaan dasar</li>
+                        <li>Praktik langsung dengan model</li>
+                    </ul>
+                    
+                    <h3>Fasilitas:</h3>
+                    <ul>
+                        <li>Modul workshop</li>
+                        <li>Snack dan makan siang</li>
+                        <li>Sertifikat partisipasi</li>
+                        <li>Sewa kamera gratis (terbatas)</li>
+                    </ul>
+                    
+                    <h3>Persyaratan Peserta:</h3>
+                    <p>Peserta diharapkan membawa kamera sendiri (DSLR/mirrorless/advanced compact). Untuk yang tidak memiliki kamera, bisa menggunakan kamera yang disediakan panitia dengan jumlah terbatas (harap konfirmasi sebelumnya).</p>
+                    
+                    <h3>Biaya Pendaftaran:</h3>
+                    <p>Rp 50.000 (mahasiswa) / Rp 75.000 (umum)</p>
+                    <p>Pembayaran dapat dilakukan via transfer ke BCA 1234567890 a.n UKM Fotografi atau langsung di sekretariat UKM Fotografi setiap hari kerja pukul 13.00-17.00 WIB.</p>
+                </div>
+                
+                <div class="action-buttons">
+                    <a href="#" class="btn-primary">
+                        🎟️ Daftar Sekarang
+                    </a>
+                    <a href="index.html" class="btn-secondary">
+                        ← Kembali
+                    </a>
+                </div>
+            </div>
+        </article>
+        
+        <section class="ukm-section">
+            <div class="ukm-header">
+                <img src="https://via.placeholder.com/80" alt="UKM Fotografi" class="ukm-logo">
+                <div>
+                    <h3>UKM Fotografi</h3>
+                    <div class="ukm-social">
+                        <a href="#" title="Instagram">📸</a>
+                        <a href="#" title="Twitter">🐦</a>
+                        <a href="#" title="Website">🌐</a>
+                    </div>
+                </div>
+            </div>
+            <p>UKM Fotografi adalah unit kegiatan mahasiswa yang fokus pada pengembangan minat dan bakat di bidang fotografi. Kegiatan rutin kami termasuk workshop bulanan, hunting foto, pameran fotografi tahunan, serta kompetisi internal. Kami terbuka untuk semua mahasiswa dari berbagai jurusan yang memiliki minat dalam fotografi, baik pemula maupun yang sudah berpengalaman.</p>
+            <p>Selain workshop, kami juga menyelenggarakan kegiatan sosial seperti pengabdian masyarakat dengan mengajar fotografi untuk anak-anak kurang mampu dan dokumentasi acara-acara sosial.</p>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>InfoUKM</h3>
+                <p>Portal informasi kegiatan Unit Kegiatan Mahasiswa di lingkungan Universitas.</p>
+                <p>Menghubungkan mahasiswa dengan berbagai kegiatan pengembangan diri.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Kontak</h3>
+                <p>Email: info@infoukm.ac.id</p>
+                <p>Telepon: (021) 1234 5678</p>
+                <p>Gedung R. Said Soekanto Lt. 4</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 InfoUKM. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
