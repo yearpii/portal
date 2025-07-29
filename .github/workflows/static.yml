@@ -38,6 +38,6 @@ jobs:
         with:
           # Upload entire repository
           path: '.'
-      - name: Deploy to GitHub Pages
+      - name: portalukm-main
         id: deployment
         uses: actions/deploy-pages@v4
